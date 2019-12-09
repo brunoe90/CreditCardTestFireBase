@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.layout_card_scanner.*
 
 class CardScannerActivity : BaseCameraActivity() {
 
+    var i = 0;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupBottomSheet(R.layout.layout_card_scanner)
@@ -22,19 +23,19 @@ class CardScannerActivity : BaseCameraActivity() {
 
     override fun onClick(v: View?) {
         fabProgressCircle.show()
-        cameraView.captureImage { cameraKitImage ->
-            // Get the Bitmap from the captured shot
-            getCardDetailsFromCloud(cameraKitImage.bitmap)
-            runOnUiThread {
-                showPreview()
-                imagePreview.setImageBitmap(cameraKitImage.bitmap)
+            cameraView.captureImage { cameraKitImage ->
+                // Get the Bitmap from the captured shot
+                getCardDetailsFromCloud(cameraKitImage.bitmap)
+                runOnUiThread {
+                    showPreview()
+                    imagePreview.setImageBitmap(cameraKitImage.bitmap)
+                }
             }
-        }
     }
 
     private fun getCardDetailsFromCloud(bitmap: Bitmap) {
         val image = FirebaseVisionImage.fromBitmap(bitmap)
-        val firebaseVisionTextDetector = FirebaseVision.getInstance().cloudTextRecognizer
+        val firebaseVisionTextDetector = FirebaseVision.getInstance().onDeviceTextRecognizer
 
         firebaseVisionTextDetector.processImage(image)
                 .addOnSuccessListener {
