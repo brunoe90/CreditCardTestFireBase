@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.layout_card_scanner.*
 
 class CardScannerActivity : BaseCameraActivity() {
 
-    var i = 0;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupBottomSheet(R.layout.layout_card_scanner)

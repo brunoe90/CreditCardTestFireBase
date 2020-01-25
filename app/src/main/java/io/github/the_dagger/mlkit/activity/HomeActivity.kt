@@ -18,11 +18,13 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         with(apiList) {
-            add(PojoApi(R.drawable.image_labelling, getString(R.string.title_labelling), getString(R.string.desc_labelling), 0))
-            add(PojoApi(R.drawable.text_recognition, getString(R.string.title_text), getString(R.string.desc_text), 1))
-            add(PojoApi(R.drawable.barcode_scanning, getString(R.string.title_barcode), getString(R.string.desc_barcode), 2))
-            add(PojoApi(R.drawable.landmark_identification, getString(R.string.title_landmark), getString(R.string.desc_landmark), 3))
-            add(PojoApi(R.drawable.face_detection, getString(R.string.title_face), getString(R.string.desc_face), 4))
+            //this list is for create different menus with differents Activities. If you want to load one new activity
+            //  1- Add the new ID on the Homeadapter after the ID creditCard
+            //  2- Copy and paste last Button line here below the last one added
+            //  3- Modify the copied line with the new parameters(IMAGE,TITLE,DESCRIPTION,ID)
+            add(PojoApi(R.drawable.tarjetas_credito, getString(R.string.title_text), getString(R.string.desc_text), 0))
+           // add(PojoApi(R.drawable.barcode_scanning, getString(R.string.title_barcode), getString(R.string.desc_barcode), 1))
+
         }
 
         rvHome.layoutManager = LinearLayoutManager(this)
